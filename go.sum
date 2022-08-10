@@ -1,0 +1,4 @@
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/whiteshtef/clockwork v0.0.0-20200221012748-027e62affd84 h1:SpHUuP1Hj2uu/MZVKbMxKMvfH0gl8yEoa/teI+0Ufxc=
+github.com/whiteshtef/clockwork v0.0.0-20200221012748-027e62affd84/go.mod h1:6o8H8sci2q3QxZ4p/U88ggqZuhY3mg34+WE5BuazLsU=
