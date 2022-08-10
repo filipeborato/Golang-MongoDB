@@ -6,5 +6,5 @@ import (
 )
 
 func TestSport(test *testing.T) {
-	controller.PopulateInformation()
+	controller.PopulateInformation(nil)
 }
