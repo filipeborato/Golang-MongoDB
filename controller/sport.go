@@ -2,6 +2,6 @@ package controller
 
 import "sport-test/service"
 
-func Sport() {
+func PopulateInformation() {
 	service.RequestNewsInformation()
 }

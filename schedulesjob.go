@@ -9,7 +9,7 @@ func main() {
 
 	sched := clockwork.NewScheduler()
 
-	sched.Schedule().Every(30).Minutes().Do(controller.Sport)
+	sched.Schedule().Every(30).Minutes().Do(controller.PopulateInformation)
 
 	sched.Run()
 }
