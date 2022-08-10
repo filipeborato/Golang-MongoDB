@@ -1,0 +1,10 @@
+package test
+
+import (
+	"sport-test/controller"
+	"testing"
+)
+
+func TestSport(test *testing.T) {
+	controller.Sport()
+}
