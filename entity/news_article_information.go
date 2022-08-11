@@ -8,9 +8,20 @@ type NewsArticleInformation struct {
 }
 
 type NewsArticle struct {
-	XMLName          xml.Name `xml:"NewsArticle"`
-	NewsArticleID    int      `xml:"NewsArticleID"`
-	BodyText         string   `xml:"BodyText"`
-	GalleryImageURLs string   `xml:"GalleryImageURLs"`
-	VideoURL         string   `xml:"VideoURL"`
+	XMLName           xml.Name `xml:"NewsArticle"`
+	NewsArticleID     int      `xml:"NewsArticleID"`
+	PublishDate       string   `xml:"PublishDate"`
+	Taxonomies        string   `xml:"Taxonomies"`
+	TeaserText        string   `xml:"TeaserText"`
+	ThumbnailImageURL string   `xml:"ThumbnailImageURL"`
+	BodyText          string   `xml:"BodyText"`
+	GalleryImageURLs  string   `xml:"GalleryImageURLs"`
+	VideoURL          string   `xml:"VideoURL"`
+	Title             string   `xml:"Title"`
+	OptaMatchId       string   `xml:"OptaMatchId"`
+	LastUpdateDate    string   `xml:"LastUpdateDate"`
+	IsPublished       bool     `xml:"IsPublished"`
+}
+
+type ResponseNewsArticle struct {
 }

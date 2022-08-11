@@ -9,31 +9,33 @@ import (
 	"sport-test/entity"
 )
 
-func RequestNewsInformation() {
+func RequestNewsInformation() (entity.NewListInformation, error) {
 	var newsInformation entity.NewListInformation
 	if xmlBytes, err := getXML(entity.URL_SPORT_MANY); err != nil {
 		log.Printf("Failed to get XML: %v", err)
-		return
+		return newsInformation, err
 	} else {
 		err = xml.Unmarshal(xmlBytes, &newsInformation)
 		if err != nil {
 			log.Printf("Failed to Parser XML: %v", err)
-			return
+			return newsInformation, err
 		}
 	}
+	return newsInformation, nil
 }
-func RequestNewsDetails(idExternal string) {
-	var newsInformation entity.NewListInformation
+func RequestNewsDetails(idExternal string) (entity.NewsArticleInformation, error) {
+	var newsArticle entity.NewsArticleInformation
 	if xmlBytes, err := getXML(entity.URL_SPORT_MANY + idExternal); err != nil {
 		log.Printf("Failed to get XML: %v", err)
-		return
+		return newsArticle, err
 	} else {
-		err = xml.Unmarshal(xmlBytes, &newsInformation)
+		err = xml.Unmarshal(xmlBytes, &newsArticle)
 		if err != nil {
 			log.Printf("Failed to Parser XML: %v", err)
-			return
+			return newsArticle, err
 		}
 	}
+	return newsArticle, nil
 }
 
 func getXML(url string) ([]byte, error) {
