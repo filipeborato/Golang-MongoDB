@@ -41,3 +41,20 @@ func MongoDB() *mongo.Client {
 	}
 	return client
 }
+
+func TestMongo(c *gin.Context) *gin.Context {
+	//c, _ := gin.CreateTestContext(httptest.NewRecorder())
+	client := MongoDB()
+	defer func() {
+		if err := client.Disconnect(context.TODO()); err != nil {
+			panic(err)
+		}
+	}()
+	c.Set("mongoDB", client)
+	db := client.Database("sport")
+	c.Set("sportDB", db)
+	c.Set("newsDB", db.Collection("news_information"))
+	c.Set("test", db.Collection("test"))
+	c.Next()
+	return c
+}
