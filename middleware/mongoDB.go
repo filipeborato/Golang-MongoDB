@@ -17,11 +17,11 @@ func Database() gin.HandlerFunc {
 		}
 		uri := os.Getenv("MONGODB_URI")
 		if uri == "" {
-			log.Fatal("You must set your 'MONGODB_URI' environmental variable. See\n\t https://www.mongodb.com/docs/drivers/go/current/usage-examples/#environment-variable")
+			log.Println("You must set your 'MONGODB_URI' environmental variable. See\n\t https://www.mongodb.com/docs/drivers/go/current/usage-examples/#environment-variable")
 		}
 		client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
 		if err != nil {
-			panic(err)
+			log.Print(err)
 		}
 		defer func() {
 			if err := client.Disconnect(context.TODO()); err != nil {
@@ -33,7 +33,6 @@ func Database() gin.HandlerFunc {
 		db := client.Database("sport")
 		c.Set("sportDB", db)
 		c.Set("newsDB", db.Collection("news_information"))
-		c.Set("articleDB", db.Collection("news_article"))
 		c.Set("test", db.Collection("test"))
 		c.Next()
 	}
