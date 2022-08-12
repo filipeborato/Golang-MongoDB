@@ -33,6 +33,7 @@ func Database() gin.HandlerFunc {
 		db := client.Database("sport")
 		c.Set("sportDB", db)
 		c.Set("newsDB", db.Collection("news_information"))
+		c.Set("articleDB", db.Collection("news_article"))
 		c.Set("test", db.Collection("test"))
 		c.Next()
 	}

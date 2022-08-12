@@ -13,7 +13,7 @@ func GetNews(c *gin.Context, keyMongo string, valueMongo interface{}) ([]entity.
 	var manyNews []entity.News
 	var cursor *mongo.Cursor
 
-	newsCollection := c.MustGet("test").(*mongo.Collection)
+	newsCollection := c.MustGet("newsDB").(*mongo.Collection)
 	if keyMongo == "" && valueMongo == nil {
 		cursor, err := newsCollection.Find(c, bson.D{})
 		if err != nil {
@@ -27,6 +27,9 @@ func GetNews(c *gin.Context, keyMongo string, valueMongo interface{}) ([]entity.
 			defer cursor.Close(c)
 			return manyNews, err
 		}
+	}
+	if cursor == nil {
+		return manyNews, nil
 	}
 
 	for cursor.Next(c) {
@@ -46,7 +49,7 @@ func GetOneNewsInformation(c *gin.Context, id string) (entity.News, error) {
 	if err != nil {
 		return news, err
 	}
-	newsCollection := c.MustGet("test").(*mongo.Collection)
+	newsCollection := c.MustGet("newsDB").(*mongo.Collection)
 
 	err = newsCollection.
 		FindOne(c, bson.D{{"_id", objectId}}).
