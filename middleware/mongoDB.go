@@ -32,7 +32,8 @@ func Database() gin.HandlerFunc {
 		c.Set("mongoDB", client)
 		db := client.Database("sport")
 		c.Set("sportDB", db)
-		c.Set("newsDB", db.Collection("news"))
+		c.Set("newsDB", db.Collection("news_information"))
+		c.Set("articleDB", db.Collection("news_article"))
 		c.Set("test", db.Collection("test"))
 		c.Next()
 	}

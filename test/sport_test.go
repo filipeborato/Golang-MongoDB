@@ -1,10 +1,10 @@
 package test
 
 import (
-	"sport-test/controller"
 	"testing"
 )
 
 func TestSport(test *testing.T) {
-	controller.PopulateNewsInformation(nil)
+	//var c *gin.Context
+	//controller.PopulateNewsInformation(c)
 }
