@@ -21,7 +21,10 @@ http://localhost:8080/news
 ```
 
 Get One News:
+
+```
 http://localhost:8080/news/:id
+```
 
 ### Create the .env in the project root with the key:
 
