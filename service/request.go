@@ -25,7 +25,7 @@ func RequestNewsInformation() (entity.NewListInformation, error) {
 }
 func RequestNewsDetails(idExternal string) (entity.NewsArticleInformation, error) {
 	var newsArticle entity.NewsArticleInformation
-	if xmlBytes, err := getXML(entity.URL_SPORT_MANY + idExternal); err != nil {
+	if xmlBytes, err := getXML(entity.URL_SPORT_ONE + idExternal); err != nil {
 		log.Printf("Failed to get XML: %v", err)
 		return newsArticle, err
 	} else {

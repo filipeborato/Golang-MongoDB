@@ -43,7 +43,6 @@ func GetNews(c *gin.Context) ([]entity.News, error) {
 
 func GetOneNews(c *gin.Context, keyMongo string, valueMongo interface{}) (entity.News, error) {
 	var news entity.News
-
 	newsCollection := c.MustGet("newsDB").(*mongo.Collection)
 	filter := bson.D{{keyMongo, valueMongo}}
 	err := newsCollection.

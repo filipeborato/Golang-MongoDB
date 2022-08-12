@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"sport-test/service"
+	"strconv"
 )
 
 func NewsMany(c *gin.Context) {
@@ -15,9 +16,13 @@ func NewsMany(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"news": news})
 }
 func NewsOne(c *gin.Context) {
-	//newsId, err := getNews(c)
-	//if err != nil {
-	//	c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": "Ticket não encontrado.", "erro:": err})
-	//	return
-	//}
+	newsId := c.Param("news_id")
+	newsIdInt, _ := strconv.Atoi(newsId)
+	news, err := service.GetOneNews(c, "newsArticleId", newsIdInt)
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": "the News was not find.", "erro:": err})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"news": news})
+
 }

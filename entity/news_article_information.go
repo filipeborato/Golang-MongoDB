@@ -23,6 +23,3 @@ type NewsArticle struct {
 	LastUpdateDate    string   `xml:"LastUpdateDate"`
 	IsPublished       bool     `xml:"IsPublished"`
 }
-
-type ResponseNewsArticle struct {
-}
