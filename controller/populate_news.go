@@ -3,7 +3,9 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"log"
+	"net/http/httptest"
 	"sport-test/entity"
+	"sport-test/middleware"
 	"sport-test/service"
 	"strconv"
 	"time"
@@ -50,4 +52,10 @@ func PopulateNewsInformation(c *gin.Context) {
 
 		}
 	}
+}
+
+func CronPopulate() {
+	c, _ := gin.CreateTestContext(httptest.NewRecorder())
+	c = middleware.MongoDBwithContext(c)
+	PopulateNewsInformation(c)
 }

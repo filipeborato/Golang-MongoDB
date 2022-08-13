@@ -11,7 +11,7 @@ import (
 
 func TestPopulate(t *testing.T) {
 	c, _ := gin.CreateTestContext(httptest.NewRecorder())
-	c = middleware.TestMongo(c)
+	c = middleware.MongoDBwithContext(c)
 	controller.PopulateNewsInformation(c)
 
 }
@@ -24,13 +24,13 @@ func TestNewsInformation(test *testing.T) {
 
 func TestNewsMany(t *testing.T) {
 	c, _ := gin.CreateTestContext(httptest.NewRecorder())
-	c = middleware.TestMongo(c)
+	c = middleware.MongoDBwithContext(c)
 	controller.NewsMany(c)
 }
 
 func TestNewsOne(t *testing.T) {
 	c, _ := gin.CreateTestContext(httptest.NewRecorder())
-	c = middleware.TestMongo(c)
+	c = middleware.MongoDBwithContext(c)
 	c.Set("news_id", "418271")
 
 	controller.NewsMany(c)

@@ -42,7 +42,7 @@ func MongoDB() *mongo.Client {
 	return client
 }
 
-func TestMongo(c *gin.Context) *gin.Context {
+func MongoDBwithContext(c *gin.Context) *gin.Context {
 	//c, _ := gin.CreateTestContext(httptest.NewRecorder())
 	client := MongoDB()
 	defer func() {
