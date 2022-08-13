@@ -27,8 +27,8 @@ func PopulateNewsInformation(c *gin.Context) {
 			if err != nil {
 				continue
 			}
-			published, _ := time.Parse(time.RFC3339, newsItem.PublishDate)
-			lastUpdated, _ := time.Parse(time.RFC3339, newsArticle.LastUpdateDate)
+			published, _ := time.Parse("2006-01-02 15:04:05", newsItem.PublishDate)
+			lastUpdated, _ := time.Parse("2006-01-02 15:04:05", newsArticle.LastUpdateDate)
 			newsInsert := entity.News{
 				NewsArticleID: newsItem.NewsArticleID,
 				OptaMatchId:   &newsItem.OptaMatchId,
@@ -42,11 +42,11 @@ func PopulateNewsInformation(c *gin.Context) {
 				Published:     published,
 				LastUpdated:   lastUpdated,
 			}
-			result, err := service.CreateNews(c, newsInsert)
+			id, err := service.CreateNews(c, newsInsert)
 			if err != nil {
 				continue
 			}
-			log.Print(result)
+			log.Print(id)
 
 		}
 	}

@@ -13,6 +13,6 @@ type News struct {
 	ImageUrl      *string   `bson:"imageUrl"`
 	GalleryUrls   *string   `bson:"galleryUrls"`
 	VideoUrl      *string   `bson:"videoUrl"`
-	Published     time.Time `json:"published" bson:"published"`
-	LastUpdated   time.Time `json:"last_updated" bson:"last_updated"`
+	Published     time.Time `bson:"published"`
+	LastUpdated   time.Time `bson:"last_updated"`
 }
