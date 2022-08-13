@@ -3,7 +3,9 @@
 ### Instalation and Testing
 
 Runing project:
-
+```
+go mod vendor
+```
 ```
 go run main.go
 ```
@@ -31,3 +33,11 @@ http://localhost:8080/news/:id
 ```
 MONGODB_URI="mongodb://{host}:{port}"
 ```
+
+#### Run Populate ScheduleJob:
+
+
+```
+ go run main.go populate-news
+```
+
