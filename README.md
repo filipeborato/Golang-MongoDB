@@ -9,6 +9,11 @@ go mod vendor
 ```
 go run main.go
 ```
+Create database in mongo with collection:
+```
+db = sport
+collection = news_information
+```
 
 Testing Route:
 
