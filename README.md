@@ -18,19 +18,19 @@ collection = news_information
 Testing Route:
 
 ```
-http://localhost:8080/populate-test
+http://localhost:8080/v1/apipopulate-test
 ```
 
 Get Many News:
 
 ```
-http://localhost:8080/news
+http://localhost:8080/v1/api/news
 ```
 
 Get One News:
 
 ```
-http://localhost:8080/news/:id
+http://localhost:8080/v1/api/news/:id
 ```
 
 ### Create the .env in the project root with the key:
