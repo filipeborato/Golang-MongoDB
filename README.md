@@ -1,5 +1,5 @@
 # Golang-MongoDB
-
+This project is an example of data persistence that makes a request to an API and records the data in MongoDB. This data can be consulted from two Get routes.
 ### Instalation and Testing
 
 Runing project:
