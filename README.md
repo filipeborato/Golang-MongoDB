@@ -1,6 +1,10 @@
 # Golang-MongoDB
 This project is an example of data persistence that makes a request to an API and records the data in MongoDB. This data can be consulted from two Get routes.
+
 ### Instalation and Testing
+To install the service you will need to have DB Mongo installed and running on your machine or remotely and create the database and collections mentioned below.
+<br>If you don't have mongo installed follow these steps: https://www.mongodb.com/docs/manual/administration/install-community/
+
 
 Runing project:
 ```
