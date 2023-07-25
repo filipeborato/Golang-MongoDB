@@ -3,9 +3,10 @@ This project is an example of data persistence that makes a request to an extern
 
 ### Instalation and Testing
 To install the service you will need to have DB Mongo installed and running on your machine or remotely and create the database and collections mentioned below.
-<br>If you don't have mongo installed follow these steps: https://www.mongodb.com/docs/manual/administration/install-community/
 
-Go Version on the project was made:
+If you don't have mongo installed follow these steps: https://www.mongodb.com/docs/manual/administration/install-community/
+
+### Go Version on the project was made:
 ```
 V1.16
 ```
