@@ -13,6 +13,7 @@ type NewsletterNewsItems struct {
 }
 type NewsletterNewsItem struct {
 	XMLName           xml.Name `xml:"NewsletterNewsItem"`
+	ArticleURL        string   `xml:"ArticleURL"`
 	NewsArticleID     int      `xml:"NewsArticleID"`
 	PublishDate       string   `xml:"PublishDate"`
 	Taxonomies        string   `xml:"Taxonomies"`

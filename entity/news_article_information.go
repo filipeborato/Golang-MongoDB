@@ -9,6 +9,7 @@ type NewsArticleInformation struct {
 
 type NewsArticle struct {
 	XMLName           xml.Name `xml:"NewsArticle"`
+	ArticleURL        string   `xml:"ArticleURL"`
 	NewsArticleID     int      `xml:"NewsArticleID"`
 	PublishDate       string   `xml:"PublishDate"`
 	Taxonomies        string   `xml:"Taxonomies"`
@@ -21,7 +22,4 @@ type NewsArticle struct {
 	OptaMatchId       string   `xml:"OptaMatchId"`
 	LastUpdateDate    string   `xml:"LastUpdateDate"`
 	IsPublished       bool     `xml:"IsPublished"`
-}
-
-type ResponseNewsArticle struct {
 }

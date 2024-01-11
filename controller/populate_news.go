@@ -1,10 +1,14 @@
 package controller
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
+	"net/http/httptest"
+	"sport-test/entity"
+	"sport-test/middleware"
 	"sport-test/service"
+	"strconv"
+	"time"
 )
 
 func PopulateNewsInformation(c *gin.Context) {
@@ -16,14 +20,42 @@ func PopulateNewsInformation(c *gin.Context) {
 	newsLetter := newsInformation.NewsletterNewsItems.NewsletterNewsItem
 
 	for _, newsItem := range newsLetter {
-		fmt.Printf("newsItem %+v\n", newsItem)
-		news, err := service.GetNews(c, "", nil)
-		if err != nil {
-			return
-		}
-		if news == nil {
-			log.Print("new nil", news)
-			continue
+
+		news, _ := service.GetOneNews(c, "newsArticleId", newsItem.NewsArticleID)
+
+		if (entity.News{}) == news {
+			newsArticleInformation, err := service.RequestNewsDetails(strconv.Itoa(newsItem.NewsArticleID))
+			newsArticle := newsArticleInformation.News
+			if err != nil {
+				continue
+			}
+			published, _ := time.Parse("2006-01-02 15:04:05", newsItem.PublishDate)
+			lastUpdated, _ := time.Parse("2006-01-02 15:04:05", newsArticle.LastUpdateDate)
+			newsInsert := entity.News{
+				NewsArticleID: newsItem.NewsArticleID,
+				OptaMatchId:   &newsItem.OptaMatchId,
+				Title:         newsItem.Title,
+				Content:       newsArticle.BodyText,
+				Teaser:        &newsItem.TeaserText,
+				Url:           newsItem.ArticleURL,
+				ImageUrl:      &newsArticle.ThumbnailImageURL,
+				GalleryUrls:   &newsArticle.GalleryImageURLs,
+				VideoUrl:      &newsArticle.VideoURL,
+				Published:     published,
+				LastUpdated:   lastUpdated,
+			}
+			id, err := service.CreateNews(c, newsInsert)
+			if err != nil {
+				continue
+			}
+			log.Print(id)
+
 		}
 	}
+}
+
+func CronPopulate() {
+	c, _ := gin.CreateTestContext(httptest.NewRecorder())
+	c = middleware.MongoDBwithContext(c)
+	PopulateNewsInformation(c)
 }
